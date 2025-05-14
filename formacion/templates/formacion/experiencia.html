@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Formacion Academica{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/fondo2.css' %}">
+{% endblock %}
+{% block header %}
+      
+    <header class="masthead-portfolio">
+        <div id="hexCanvas"></div> 
+            <div id="nombre">
+                <h1>Formación Academica</h1>
+                    <span class="subheading">
+                        <p>▸ Estas son mis titulaciones académicas regladas, incluyendo estudios oficiales en programación y desarrollo.</p>
+                    </span>
+        </div>
+    </header>
+      
+{% endblock %}
+
+{% block content %}
+<div>
+    {% for formacion in formaciones %}
+    <div class="row project mb-5 align-items-center">  
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+            {% if formacion.certificado %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{{ formacion.certificado.url }}" alt="Certificado académico">
+            {% else %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{% static 'core/img/placeholder.png' %}" alt="Sin certificado">
+            {% endif %}
+        </div>
+        <div class="col-lg-7 col-md-9">
+            <h2 class="fw-bold text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1.5rem;">
+                {{ formacion.titulo }}
+            </h2>
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Institución:</strong> {{ formacion.institucion }}
+            </p>
+            {% if formacion.disciplina %}
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Disciplina:</strong> {{ formacion.disciplina }}
+            </p>
+            {% endif %}
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Desde:</strong> {{ formacion.fecha_inicio|date:"F Y" }} 
+                {% if formacion.en_curso %}
+                    <strong> - Actualmente</strong>
+                {% else %}
+                    <strong> hasta:</strong> {{ formacion.fecha_fin|date:"F Y" }}
+                {% endif %}
+            </p>
+            {% if formacion.nota %}
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Nota:</strong> {{ formacion.nota }}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-white">No se han registrado formaciones académicas todavía.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+<script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+{% endblock %}

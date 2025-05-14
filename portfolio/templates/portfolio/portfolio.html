@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Portafolio{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/fondo2.css' %}">
+{% endblock %}
+
+{% block header %}
+
+<header class="masthead-portfolio">
+  <div id="hexCanvas"></div> 
+    <div id="nombre">
+    <h1>Portafolio</h1>
+    <span class="subheading">
+      <p>▸ Estos son algunos de los proyectos que he desarrollado a lo largo de mis estudios como estudiante de Desarrollo de Aplicaciones Web.</p>
+    </span>
+</div>
+
+</header>
+
+{% endblock %}
+
+{% block content %}
+<section class="contenido-portfolio">
+  <div class="container">
+    <p class="text-white">Este es el contenido de tu portafolio.</p>
+    <p class="text-white">Aquí podrías mostrar tus proyectos o información adicional.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+<script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+{% endblock %}

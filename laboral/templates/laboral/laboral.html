@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Experiencia Laboral{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/fondo2.css' %}">
+{% endblock %}
+
+
+{% block header %}
+      <header class="masthead-portfolio">
+        <div id="hexCanvas"></div> 
+          <div id="nombre">
+           <h1>Experiencia Laboral</h1>
+           <div class="subheading">
+           <p >▸ Trayectoria consolidada en el sector industrial como operador de producción en empresas líderes.</p>
+           </div>
+        </div>  
+      </header>
+      
+{% endblock %}
+
+
+{% block content %}
+<div>
+    {% for laboral in laborales %}
+    <div class="row project mb-5 align-items-center">
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+            {% if laboral.certificado %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{{ laboral.certificado.url }}" alt="Certificado del curso">
+            {% else %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{% static 'core/img/placeholder.png' %}" alt="Sin certificado">
+            {% endif %}
+        </div>
+        <div class="col-lg-7 col-md-9">
+            <h2 class="fw-bold text-white" style="font-family: 'Share Tech', sans-serif; font-size: 1.5rem;">
+                {{ laboral.cargo }}
+            </h2>
+            <p class="fw-light text-white" style="font-family: 'Share Tech', sans-serif; font-size: 1rem;">
+                <strong>Empresa:</strong> {{ laboral.empresa }}
+            </p>
+            <p class="fw-light text-white" style=" font-family: 'Share Tech', sans-serif; font-size: 1rem;">
+                <strong>Tipo de empleo:</strong> {{ laboral.tipo_empleo }}
+            </p>
+            {% if laboral.ubicacion %}
+            <p class="fw-light text-white" style="font-family: 'Share Tech', sans-serif; font-size: 1rem;">
+                <strong>Ubicación:</strong> {{ laboral.ubicacion }} {% if laboral.tipo_ubicacion %} ({{ laboral.tipo_ubicacion }}){% endif %}
+            </p>
+            {% endif %}
+            <p class="fw-light text-white" style="font-family: 'Share Tech', sans-serif; font-size: 1rem;">
+                <strong>Desde:</strong> {{ laboral.fecha_inicio|date:"F Y" }} {% if laboral.actualmente %} - <strong>Actualmente</strong>{% else %} <strong>hasta:</strong> {{ laboral.fecha_fin|date:"F Y" }}{% endif %}
+            </p>
+            <div class="mt-3">
+                <button class="btn btn-outline-dark text-white btn-sm px-3 rounded-pill shadow-sm"
+                        data-toggle="collapse" data-target="#desc{{ forloop.counter }}"
+                        aria-expanded="false" aria-controls="desc{{ forloop.counter }}">
+                    🔍 Descripción del puesto
+                </button>
+                <div class="collapse mt-2" id="desc{{ forloop.counter }}">
+                    <div class="card card-body border border-dark text-dark" style="font-family: 'Share Tech', sans-serif; font-size: 1rem;">
+                        {{ laboral.descripcion|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-white">Aún no se han registrado experiencias laborales.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+<script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+{% endblock %}
