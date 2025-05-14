@@ -1,0 +1,44 @@
+* {
+  font-family: 'Share Tech', sans-serif;
+}
+#mainNav .dropdown-menu {
+  display: none !important;
+  position: absolute !important;
+  background-color: #444 !important;  /* gris sólido */
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.5rem 0 !important;
+  min-width: 200px !important;
+  z-index: 1050 !important;
+  font-family: 'Share Tech', sans-serif;   font-size: 0.75rem;
+  font-weight: 700;
+}
+
+#mainNav .dropdown-menu.show {
+  display: block !important;
+}
+
+#mainNav .dropdown-item {
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.5;
+  text-align: left !important;
+  background-color: #444 !important;  /* fondo gris igual que el menú */
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Share Tech', sans-serif !important;
+}
+
+#mainNav .dropdown-item:hover {
+  background-color: #555 !important;  /* gris más oscuro al pasar el ratón */
+  color: #fff !important;
+}
+
+@media (max-width: 576px) {
+  body > :not(header) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

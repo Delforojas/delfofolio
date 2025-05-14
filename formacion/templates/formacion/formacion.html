@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Cursos{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/fondo2.css' %}">
+{% endblock %}
+{% block header %}
+      
+    <header class="masthead-portfolio">
+        <div id="hexCanvas"></div> 
+            <div id="nombre">
+                <h1>Cursos </h1>
+                    <span class="subheading">
+                        <p>▸ Mientras cursaba el ciclo de Desarrollo de Aplicaciones Web (DAW), también he realizado varios cursos para seguir aprendiendo y reforzar mis conocimientos.</p>
+                     </span>
+        </div>
+    </header>
+      
+{% endblock %}
+{% block content %}
+<div >  <!-- Fondo claro con padding vertical -->
+{% for formar in formars %}
+    <div class="row project mb-5 align-items-center">  
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+            {% if formar.certificado %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{{ formar.certificado.url }}" alt="Certificado del curso">
+            {% else %}
+                <img class="img-fluid rounded shadow-sm"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     src="{% static 'core/img/placeholder.png' %}" alt="Sin certificado">
+            {% endif %}
+        </div>
+        <div class="col-lg-7 col-md-9">
+            <h2 class="fw-bold text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1.5rem;">
+                {{ formar.title }}
+            </h2>   
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Plataforma:</strong> {{ formar.plataforma }}
+            </p>
+            {% if formar.instructor %}
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Instructor:</strong> {{ formar.instructor }}
+            </p>
+            {% endif %}
+            {% if formar.duracion %}
+            <p class="fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Duración:</strong> {{ formar.duracion }} horas
+            </p>
+            {% endif %}
+
+            <div class="mt-3">
+                <button class="btn btn-outline-dark text-white btn-sm px-3 rounded-pill shadow-sm"
+                        data-toggle="collapse" data-target="#desc{{ forloop.counter }}"
+                        aria-expanded="false" aria-controls="desc{{ forloop.counter }}">
+                    🔍 Más detalles del curso
+                </button>
+                <div class="collapse mt-2" id="desc{{ forloop.counter }}">
+                    <div class="card card-body bg-light text-dark border border-dark"
+                        style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                        {{ formar.descripcion|safe }}
+                    </div>
+                </div>
+            </div>
+
+            <p class="fw-light text-white mt-2" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
+                <strong>Finalizado en:</strong> {{ formar.fecha_finalizacion|date:"d/m/Y" }}
+            </p>
+            {% if formar.enlace %}
+            <p>
+                <a class="btn btn-outline-dark btn-sm text-white rounded-pill" href="{{ formar.enlace }}" target="_blank">Ver curso</a>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+<script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+{% endblock %}

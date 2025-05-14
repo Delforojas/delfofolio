@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "/Users/delfinrojas/.local/share/virtualenvs/CursoDjango-Kom-XKKG/bin/python",
+  "python.defaultInterpreterPath": "/Users/delfinrojas/.local/share/virtualenvs/CursoDjango-Kom-XKKG/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.pylin∑

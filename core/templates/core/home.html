@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Portada{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'core/css/fondo2.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
+<header class="masthead-portfolio1">
+  <div id="hexCanvas"></div>
+  <div id="nombre">
+    <h1>Delfo Rojas</h1>
+    <span class="subheading">
+      <p>▸ Estudiante de Desarrollo de Aplicaciones Web (DAW)</p>
+      <p style="color: #f4e459; text-shadow: 0.5px 0.5px 0.5px #008A99;">
+        ▸ Buscando empresa donde realizar la asignatura FCT (DAW)
+      </p>      
+      <p>▸ Enfocado en Análisis de Datos y Backend</p>
+      <p>▸ Desarrollador Web</p>
+      <p>▸ Data Science</p>
+      <p>▸ Machine Learning</p>
+    </span>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="{% static 'core/vendor/jquery/fondo.js' %}"></script>
+{% endblock %}
