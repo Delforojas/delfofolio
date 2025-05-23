@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['delforojas.pythonanywhere.com']
 
-# Application definition
+# Application definition  , '127.0.0.1:8000'
 
 INSTALLED_APPS = [
     "ckeditor",
