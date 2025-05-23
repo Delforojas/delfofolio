@@ -27,7 +27,7 @@ SECRET_KEY = "REDACTED"
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['delforojas.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
