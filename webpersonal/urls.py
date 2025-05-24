@@ -33,7 +33,7 @@ urlpatterns = [
     path('experiencia/', experiencia_academica_views.experiencia, name='experiencia'),
     path('experiencialaboral/', experiencia_laboral_views.experiencia_laboral, name='experiencialaboral'),
     path('contact/', core_views.contact, name="contact"),
-    path('admindelpho/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
     from django.conf.urls.static import static
