@@ -23,12 +23,11 @@
 {% endblock %}
 
 {% block content %}
-<section class="contenido-portfolio">
-  <div class="container">
-    {% for proyecto in projects %}
-      <div class="row project mb-5 align-items-center">  
-          <div class="col-lg-3 col-md-4 offset-lg-1">
-              {% if proyecto.image %}
+<div>
+  {% for proyecto in projects %}
+    <div class="row project mb-5 align-items-center">
+      <div class="col-lg-3 col-md-4 offset-lg-1">
+        {% if proyecto.image %}
                   <img class="img-fluid rounded shadow-sm"
                        style="height: 200px; width: 100%; object-fit: cover;"
                        src="{{ proyecto.image.url }}" alt="{{ proyecto.title }}">
@@ -36,7 +35,7 @@
                   <img class="img-fluid rounded shadow-sm"
                        style="height: 200px; width: 100%; object-fit: cover;"
                        src="{% static 'core/img/placeholder.png' %}" alt="Sin imagen">
-              {% endif %}
+        {% endif %}
           </div>
           <div class="col-lg-7 col-md-9">
               <h2 class="fw-bold text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1.5rem;">
@@ -55,11 +54,11 @@
               </p>
           </div>
       </div>
+    </div>
+  </div>
     {% empty %}
       <p class="text-white">No se han raaaaegistrado proyectos todavía.</p>
     {% endfor %}
-  </div>
-</section>
 {% endblock %}
 
 {% block extra_js %}
