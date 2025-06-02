@@ -1,0 +1,9 @@
+# Ignorar la carpeta estática generada por collectstatic
+/staticfiles/
+
+# Base de datos SQLite y entorno virtual
+/db.sqlite3
+/venv/
+*.pyc
+__pycache__/
+
