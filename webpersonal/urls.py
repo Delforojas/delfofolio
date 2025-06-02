@@ -22,6 +22,7 @@ from portfolio import views as portfolio_views
 from formacion import views as formacion_views
 from formacion import views as experiencia_academica_views
 from laboral import views as experiencia_laboral_views
+from dataset import views as dataset_views
 
 from django.conf import settings
 
@@ -29,12 +30,13 @@ urlpatterns = [
     path('', core_views.home, name="home"),
     path('about-me/', core_views.about, name="about"),
     path('portfolio/', portfolio_views.portfolio, name="portfolio"),
+    path('dataset/', dataset_views.dataset, name='dataset'),
     path('formacion/', formacion_views.formacion, name="formacion"),
     path('experiencia/', experiencia_academica_views.experiencia, name='experiencia'),
     path('experiencialaboral/', experiencia_laboral_views.experiencia_laboral, name='experiencialaboral'),
     path('contact/', core_views.contact, name="contact"),
     path('admin/', admin.site.urls),
-]
+] 
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

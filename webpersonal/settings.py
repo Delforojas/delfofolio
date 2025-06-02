@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-z=o8ght64sxwd45_&gfjk15wy*!phgv11sv7!2dd!-chy@*4rw"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['delforojas.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition  , '127.0.0.1:8000' , 'delforojas.pythonanywhere.com', '127.0.0.1', 'localhost'
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "portfolio.apps.PortfolioConfig",
     "formacion.apps.FormacionConfig",
     "laboral.apps.LaboralConfig",
+    "dataset.apps.DatasetConfig", 
+
 
 ]
 
@@ -133,3 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
