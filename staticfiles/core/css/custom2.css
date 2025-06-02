@@ -1,0 +1,18 @@
+* {
+  font-family: 'Share Tech', sans-serif;
+}
+.hover-proyecto {
+  background-image: url('../img/fondo.png'); /* Ajusta si es necesario */
+  background-size: cover;
+  background-position: center;
+  border-radius: 100px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(100px);
+}
+@media (max-width: 576px) {
+  body > :not(header) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
