@@ -16,3 +16,15 @@
     padding-right: 1rem;
   }
 }
+/* Ajustar las celdas de código del notebook Jupyter */
+div.highlight, pre {
+    overflow-x: auto !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Opcionalmente mejorar la visualización de código */
+code, pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
