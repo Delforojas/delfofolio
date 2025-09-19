@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "REDACTED"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+ALLOWED_HOSTS = ['delforojas.pythonanywhere.com']
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition  , '127.0.0.1:8000' , 'delforojas.pythonanywhere.com', '127.0.0.1', 'localhost'
 
