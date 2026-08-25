@@ -1,7 +1,19 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Portada{% endblock %}
 {% block body_class %}home-page{% endblock %}
+
+{% block body_overlay %}
+<div class="video-intro" id="videoIntro" role="dialog" aria-label="Introducción en vídeo">
+  <div class="video-intro__frame">
+    <video class="video-intro__media" id="videoIntroMedia" autoplay muted playsinline>
+      <source src="{% static 'core/logomotion-720p.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+  <p class="video-intro__prompt">Pulsa para continuar</p>
+</div>
+{% endblock %}
 
 {% block header %}
 <header class="home-hero">
@@ -27,4 +39,8 @@
     </ul>
   </div>
 </header>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'core/js/video-intro.js' %}"></script>
 {% endblock %}
