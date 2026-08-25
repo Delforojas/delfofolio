@@ -1,36 +1,35 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
 {% load static %}
-{% block title%}Contacto {% endblock %}
-{% block extra_css %}
-<link href="{% static 'core/css/fondo2.css' %}" rel="stylesheet">
-{% endblock %}
+
+{% block title %}Contacto{% endblock %}
 
 {% block header %}
-<header class="masthead-portfolio">
-  <div id="hexCanvas"></div> 
-      <div id="nombre">
-          <h1>Contacto </h1>
-              <span class="subheading">
-                  <p>▸ Si deseas ponerte en contacto conmigo, no dudes en hacerlo. A continuación, te dejo mis redes y formas de contacto directo.</p>
-               </span>
-  </div>
-</header>
+  {% include 'core/_page_header.html' with page_title='Contacto' page_subtitle='Si deseas ponerte en contacto conmigo, no dudes en hacerlo. A continuación, te dejo mis redes y formas de contacto directo.' %}
 {% endblock %}
 
-{% block content%}
-<div class="row">
-<div class="col-lg-8 col-md-10 mx-auto fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
-    <br>
-    <p><b>Linkedin</b> Delfín Rojas</p>
-    <p><b>Correo Electronico</b> delfinrojasespina@gmail.com</p>
-    <p><b>Instagram</b> itsjust Delfo</p>
-    <p><b>Facebook</b> itsjust_Delfo</p>
-    <p><b>Github</b> Delforojas</p>
-    
+{% block content %}
+{% static 'core/img/technology-icons.svg' as local_icons %}
+<section class="page-section" aria-label="Formas de contacto">
+  <div class="container contact-grid">
+    <address class="contact-card">
+      <h2>Contacto profesional</h2>
+      {% include 'core/_social_links.html' %}
+    </address>
+    <div class="contact-card">
+      <h2>Otras redes</h2>
+      <p class="contact-network">
+        <svg class="contact-network__icon" style="color: #FF0069" aria-hidden="true" focusable="false">
+          <use href="{{ local_icons }}#instagram"></use>
+        </svg>
+        <span><strong>Instagram:</strong> itsjust Delfo</span>
+      </p>
+      <p class="contact-network">
+        <svg class="contact-network__icon" style="color: #0866FF" aria-hidden="true" focusable="false">
+          <use href="{{ local_icons }}#facebook"></use>
+        </svg>
+        <span><strong>Facebook:</strong> itsjust_Delfo</span>
+      </p>
+    </div>
   </div>
-</div>
-{%endblock %}
-{% block extra_js %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+</section>
 {% endblock %}

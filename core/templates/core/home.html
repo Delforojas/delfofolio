@@ -1,35 +1,30 @@
 {% extends 'core/base.html' %}
-{% load static %}
 
 {% block title %}Portada{% endblock %}
+{% block body_class %}home-page{% endblock %}
 
-{% block extra_css %}
-<link href="{% static 'core/css/fondo2.css' %}" rel="stylesheet">
-{% endblock %}
-
-
-
-{% block content %}
-<header class="masthead-portfolio1">
-  <div id="hexCanvas"></div>
-  <div id="nombre">
+{% block header %}
+<header class="home-hero">
+  <div class="container home-hero__content">
     <h1>Delfo Rojas</h1>
-    <span class="subheading">
-      <p>▸ Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</p>
-      <p style="color: #f4e459; text-shadow: 0.5px 0.5px 0.5px #008A99;">
-        ▸ Backend Developer
-      </p>      
-      <p>▸ Enfocado en Análisis de Datos y Backend</p>
-      <p>▸ Desarrollador Web</p>
-      <p>▸ Data Science</p>
-      <p>▸ Machine Learning</p>
-    </span>
+    <p class="home-hero__lead">Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</p>
+    <ul class="home-hero__roles" aria-label="Áreas profesionales">
+      <li>Backend Developer</li>
+
+      <li>Enfocado en Análisis de Datos y Backend</li>
+
+      <li>Desarrollador Web</li>
+
+      <li>Data Science</li>
+
+      <li>Machine Learning</li>
+
+      <li>Data Analyst</li>
+
+      <li>Business Intelligence</li>
+
+      <li>AI-Assisted Development</li>
+    </ul>
   </div>
 </header>
-
-{% endblock %}
-
-{% block extra_js %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="{% static 'core/vendor/jquery/fondo.js' %}"></script>
 {% endblock %}

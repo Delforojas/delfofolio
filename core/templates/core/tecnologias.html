@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Tecnologías{% endblock %}
+
+{% block header %}
+  {% include 'core/_page_header.html' with page_title='Tecnologías' page_subtitle='Lenguajes, frameworks y herramientas con las que trabajo.' %}
+{% endblock %}
+
+{% block content %}
+{% static 'core/img/technology-icons.svg' as technology_icons %}
+<div class="page-section">
+  <div class="container technology-categories">
+    {% for category in technology_categories %}
+      <section class="technology-category" aria-labelledby="{{ category.slug }}-title">
+        <h2 class="technology-category__title" id="{{ category.slug }}-title">{{ category.name }}</h2>
+        <ul class="technology-grid">
+          {% for technology in category.technologies %}
+            <li class="technology-card">
+              <svg class="technology-card__icon technology-card__icon--{{ technology.icon }}" style="--technology-color: {{ technology.color }}" aria-hidden="true" focusable="false">
+                <use href="{{ technology_icons }}#{{ technology.icon }}"></use>
+              </svg>
+              <span class="technology-card__name">{{ technology.name }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

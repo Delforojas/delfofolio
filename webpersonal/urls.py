@@ -29,7 +29,9 @@ from django.conf import settings
 urlpatterns = [
     path('', core_views.home, name="home"),
     path('about-me/', core_views.about, name="about"),
+    path('tecnologias/', core_views.tecnologias, name="tecnologias"),
     path('portfolio/', portfolio_views.portfolio, name="portfolio"),
+    path('dashboards/', portfolio_views.dashboards, name="dashboards"),
     path('dataset/', dataset_views.dataset, name='dataset'),
     path('formacion/', formacion_views.formacion, name="formacion"),
     path('experiencia/', experiencia_academica_views.experiencia, name='experiencia'),
@@ -37,4 +39,3 @@ urlpatterns = [
     path('contact/', core_views.contact, name="contact"),
     path('admin/', admin.site.urls),
 ] 
-
