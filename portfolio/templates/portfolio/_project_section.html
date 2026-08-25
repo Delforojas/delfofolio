@@ -1,0 +1,62 @@
+<section class="portfolio-section" aria-labelledby="{{ section_id }}-title">
+  <h2 id="{{ section_id }}-title" class="portfolio-section-title">{{ section_title }}</h2>
+
+  <div class="content-list">
+    {% for proyecto in section_projects %}
+      <article class="content-card project">
+        <div class="content-card__grid">
+          <div class="content-card__media">
+            {% if proyecto.image %}
+              <img
+                src="{{ proyecto.image.url }}"
+                alt="Captura de {{ proyecto.title }}"
+                loading="lazy"
+                decoding="async">
+            {% else %}
+              <div class="media-placeholder">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                <span>Captura no disponible</span>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="content-card__body">
+            <h3 class="content-card__title">{{ proyecto.title }}</h3>
+            <p class="content-card__text">{{ proyecto.description|linebreaksbr }}</p>
+
+            {% if proyecto.technologies %}
+              <dl class="metadata-list">
+                <dt>Tecnologías</dt>
+                <dd>{{ proyecto.technologies }}</dd>
+              </dl>
+            {% endif %}
+
+            <div class="card-actions">
+              {% if proyecto.link %}
+                <a class="action-link" href="{{ proyecto.link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                  {{ link_label }}
+                </a>
+              {% endif %}
+              {% if proyecto.github_link %}
+                <a class="action-link action-link--secondary" href="{{ proyecto.github_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-github" aria-hidden="true"></i>
+                  Ver repositorio en GitHub
+                </a>
+              {% endif %}
+            </div>
+
+            <p class="portfolio-project-date">
+              <strong>Fecha:</strong> {{ proyecto.created|date:"m/Y" }}
+            </p>
+          </div>
+        </div>
+      </article>
+    {% empty %}
+      <div class="empty-state">
+        <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+        <p>{{ empty_message }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
