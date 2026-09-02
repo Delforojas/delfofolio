@@ -1,46 +1,40 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
 {% load static %}
 
-{% block title%}Acerca de{% endblock %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'core/css/fondo2.css' %}">
-{% endblock %}
-
+{% block title %}Acerca de{% endblock %}
 
 {% block header %}
-<header class="masthead-portfolio">
-  <div id="hexCanvas"></div> 
-      <div id="nombre">
-          <h1>Acerca de  </h1>
-              <span class="subheading">
-                  <p>▸ Biografia</p>
-               </span>
-  </div>
-</header>
-      
+  {% include 'core/_page_header.html' with page_title='Acerca de' page_subtitle='Biografía' %}
 {% endblock %}
 
-
-{% block content%}
- <div class="row">
-    <div class="col-lg-3 col-md-4 offset-lg-1 text-center text-md-start">
-        <img class="img-fluid avatar mx-auto d-block" style="max-width: 150px;" src="{% static 'core/img/avatar1.jpg' %}" alt="Avatar">    </div>
-    <div class="col-lg-7 col-md-8 fw-light text-white" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">
-        <h2 class="section-heading">Delfo Rojas</h2>   
-        <p>Nací en Los Barrios, Cádiz. Desde pequeño he sido un apasionado del deporte y de la tecnología. Siempre me gustó arreglar mis propios ordenadores, investigar cómo funcionaban las cosas y buscar respuestas a cada pregunta que me surgía. Esa curiosidad innata me ha acompañado siempre y me ha llevado a no conformarme con lo superficial, sino a profundizar para entender y aprender.</p>
-
-        <p>Cursé el Bachillerato Tecnológico en el IES Sierra Luna, y posteriormente realicé un Ciclo Formativo de Grado Superior en Construcciones Metálicas en el mismo centro, motivado por las oportunidades laborales que ofrecía mi entorno. Sin embargo, dichas oportunidades no llegaron y empecé a trabajar en distintos sectores, principalmente en trabajos forestales.</p>
-
-        <p>Más adelante, me trasladé a Madrid en busca de nuevas oportunidades y comencé a trabajar como operario de producción en la empresa farmacéutica norteamericana Lilly. Posteriormente, continué mi trayectoria en otra empresa del sector, Normon. Tras un tiempo, regresé a mi tierra con el objetivo de encontrar una oportunidad laboral en Acerinox, aunque antes pasé brevemente por Sevilla trabajando en Renault.</p>
-
-        <p>Finalmente, logré entrar en Acerinox como operario de producción, donde llevo más de 7 años. A lo largo de este tiempo, mi interés por la tecnología y el mundo digital ha seguido creciendo. Por ello, decidí comenzar el Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web en modalidad online a través de Ilerna, compaginándolo con mi trabajo actual.</p>
-
-        <p>Además, he complementado mi formación con diversos cursos relacionados con Python, Inteligencia Artificial, Análisis de Datos y SQL. Actualmente, me encuentro buscando una empresa donde realizar las prácticas de este ciclo formativo. Sigo aprendiendo, sigo formándome, y me ilusiona la idea de poder dedicarme profesionalmente al desarrollo web y al análisis de datos, un mundo en constante evolución que premia la curiosidad y el deseo de superación: dos cualidades que me definen.</p>
-
+{% block content %}
+<section class="page-section" aria-labelledby="biografia-title">
+  <div class="container about-layout">
+    <div>
+      <img
+        class="about-photo"
+        src="{% static 'core/img/avatar1.jpg' %}"
+        alt="Retrato de Delfo Rojas"
+        width="200"
+        height="200"
+        decoding="async">
     </div>
-</div>
-{%endblock %}
-{% block extra_js %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="{% static 'core/vendor/jquery/fondo3.js' %}"></script>
+    <div class="readable-content">
+      <h2 id="biografia-title">Delfo Rojas</h2>
+      <p>Nací en Los Barrios, Cádiz. Desde pequeño he sido un apasionado del deporte y de la tecnología. Siempre me gustó arreglar mis propios ordenadores, investigar cómo funcionaban las cosas y buscar respuestas a cada pregunta que me surgía. Esa curiosidad innata me ha acompañado siempre y me ha llevado a no conformarme con lo superficial, sino a profundizar para entender y aprender.</p>
+
+      <p>Cursé el Bachillerato Tecnológico en el IES Sierra Luna y, posteriormente, realicé un Ciclo Formativo de Grado Superior en Construcciones Metálicas en el mismo centro, motivado por las oportunidades laborales que ofrecía mi entorno. Sin embargo, dichas oportunidades no llegaron y empecé a trabajar en distintos sectores, principalmente en trabajos forestales.</p>
+
+      <p>Más adelante, me trasladé a Madrid en busca de nuevas oportunidades y comencé a trabajar como operario de producción en la empresa farmacéutica Lilly. Posteriormente, continué mi trayectoria en otra empresa del sector, Normon. Tras un tiempo, regresé a mi tierra con el objetivo de encontrar una oportunidad laboral en Acerinox, aunque antes pasé brevemente por Sevilla trabajando en Renault.</p>
+
+      <p>Finalmente, logré entrar en Acerinox como operario de producción, donde llevo más de 7 años. Durante este tiempo, mi interés por la tecnología y el mundo digital continuó creciendo, hasta el punto de decidir reorientar mi carrera profesional. Por ello, cursé el Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web (DAW) en modalidad online a través de ILERNA, compaginando los estudios con mi trabajo.</p>
+
+      <p>Tras finalizar DAW, he continuado ampliando mi formación y desarrollando proyectos propios relacionados con desarrollo web y backend, Python, SQL y bases de datos, análisis de datos, Business Intelligence e Inteligencia Artificial. También he reforzado mi nivel de inglés mediante la preparación del nivel B2 de Trinity, habiendo superado las pruebas de Listening y Speaking y estando actualmente a la espera del resultado de Writing.</p>
+
+      <p>Mi objetivo ahora es dar el salto profesional al sector tecnológico y seguir desarrollando mi carrera especialmente en áreas relacionadas con el desarrollo backend, las bases de datos, el análisis de datos y Business Intelligence. Continúo aprendiendo, incorporando nuevas herramientas y aplicando mis conocimientos en proyectos reales que me permiten seguir creciendo y demostrar de forma práctica mis capacidades.</p>
+
+      <p>Después de años compaginando trabajo, estudios y formación continua, afronto esta nueva etapa con la misma curiosidad que despertó mi interés por la tecnología desde pequeño, pero también con la constancia, capacidad de adaptación y ganas de superación que he adquirido a lo largo de mi trayectoria profesional.</p>
+    </div>
+  </div>
+</section>
 {% endblock %}

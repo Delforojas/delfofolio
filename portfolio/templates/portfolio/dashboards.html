@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboards{% endblock %}
+
+{% block header %}
+  {% include 'core/_page_header.html' with page_title='Dashboards' page_subtitle='Proyectos de visualización de datos desarrollados con Power BI.' %}
+{% endblock %}
+
+{% block content %}
+<div class="page-section">
+  <div class="container">
+    {% include 'portfolio/_project_section.html' with section_id='power-bi' section_title='Power BI' section_projects=projects link_label='Ver dashboard interactivo' empty_message='No hay dashboards de Power BI publicados todavía.' %}
+  </div>
+</div>
+{% endblock %}

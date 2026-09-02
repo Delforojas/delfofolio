@@ -8,6 +8,7 @@ const hexMargin = 2;           // space around hexagons
 const drawLines = true;        // draw all the lines
 const drawPoints = false;      // also draw lone double active hexagons as circles
 const zenoSway = 0.2;          // hexagon background colour transition scalar
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let drawHex = true;            // draw hexagon background
 let drawGrid = true;           // when false the background is the same colour as inactive hexagons
@@ -71,26 +72,15 @@ function mouseOnScreen() {
 // Setup
 //======================================
 
-function setup() {
-  const halfHeight = window.innerHeight / 2;
-
-  // Crea el canvas y lo mete dentro de #hexCanvas (que está dentro del header)
-  let canvas = createCanvas(window.innerWidth,  window.innerHeight / 2);
-  canvas.parent('hexCanvas');
-
-  frameRate(60);
-
-  // calcular ancho y altura de hexágonos
+function rebuildGrid(canvasWidth, canvasHeight) {
   hexWidth = hexRadius * 2;
   hexHeight = Math.sqrt(3) * hexRadius;
-
-  // columnas y filas SOLO para media pantalla
-  columns = Math.ceil(window.innerWidth / (hexRadius * 3));
-  rows = Math.ceil(halfHeight / (hexHeight / 2)) + 1;
-
+  columns = Math.ceil(canvasWidth / (hexRadius * 3));
+  rows = Math.ceil(canvasHeight / (hexHeight / 2)) + 1;
   mousePos = createVector(0, 0);
+  hexagons = [];
+  agents = [];
 
-  // hexágonos
   for (let x = 0; x < columns; x++) {
     hexagons.push([]);
     for (let y = 0; y < rows; y++) {
@@ -98,19 +88,55 @@ function setup() {
     }
   }
 
-  // vecinos
   for (let x = 0; x < columns; x++) {
     for (let y = 0; y < rows; y++) {
       hexagons[x][y].initialiseNeighbours(x, y);
     }
   }
 
-  // agentes
   for (let i = 0; i < creatorCount + destroyerCount; i++) {
     let creator = (i < creatorCount);
     agents.push(new Agent(creator));
   }
 }
+
+function setup() {
+  const container = document.getElementById('hexCanvas');
+  const canvasWidth = container.clientWidth || window.innerWidth;
+  const canvasHeight = container.clientHeight || window.innerHeight / 2;
+
+  pixelDensity(1);
+  const canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.parent('hexCanvas');
+  frameRate(30);
+  rebuildGrid(canvasWidth, canvasHeight);
+
+  if (reducedMotionQuery.matches) {
+    agentsMoving = false;
+    drawMouse = false;
+    noLoop();
+  }
+}
+
+function windowResized() {
+  const container = document.getElementById('hexCanvas');
+  const canvasWidth = container.clientWidth || window.innerWidth;
+  const canvasHeight = container.clientHeight || window.innerHeight / 2;
+
+  resizeCanvas(canvasWidth, canvasHeight);
+  rebuildGrid(canvasWidth, canvasHeight);
+  redraw();
+}
+
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    noLoop();
+  } else if (reducedMotionQuery.matches) {
+    redraw();
+  } else {
+    loop();
+  }
+});
 
 // Global Draw
 //======================================
@@ -721,66 +747,6 @@ function mouseDragged() {
 //======================================
 
 function keyPressed() {
-	
-	// Spacebar
-	//------------------------------------
-  if (keyCode == 32) {
-		agentsMoving = !agentsMoving;
-	}
-	
-	// W - wipe the board
-	//------------------------------------
-  if (keyCode == 87) {
-		for (let x = 0; x < columns; x++) {
-			for (let y = 0; y < rows; y++) {
-				hexagons[x][y].nextActive = false;
-			}
-		}
-	}
-	
-	// Q - kill all agents
-	//------------------------------------
-  if (keyCode == 81) {
-		creatorCount = 0;
-		destroyerCount = 0;
-		agents = [];
-	}
-	
-	// T - toggle agent visibility
-	//------------------------------------
-  if (keyCode == 84) {
-		drawAgents = !drawAgents;
-	}
-	
-	// M - toggle mouse visibility
-	//------------------------------------
-  if (keyCode == 77) {
-		drawMouse = !drawMouse;
-	}
-	
-	// H - toggle hexagon visibility
-	//------------------------------------
-  if (keyCode == 72) {
-		drawHex = !drawHex;
-	}
-	
-	// G - toggle grid visibility
-	//------------------------------------
-  if (keyCode == 71) {
-		drawGrid = !drawGrid;
-	}
-	
-	// C - add a creator
-	//------------------------------------
-  if (keyCode == 67) {
-		creatorCount++;
-		agents.push(new Agent(true));
-	}
-	
-	// D - add a destroyer
-	//------------------------------------
-  if (keyCode == 68) {
-		destroyerCount++;
-		agents.push(new Agent(false));
-	}
+  // El fondo es decorativo y no debe capturar atajos globales.
+  return true;
 }

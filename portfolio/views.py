@@ -1,7 +1,16 @@
 from django.shortcuts import render
-from .models import Project 
+from .models import Project
 
-# Create your views here.
+
 def portfolio(request):
-    projects = Project.objects.all()
-    return render(request, "portfolio/portfolio.html" , {'projects':projects}) 
+    context = {
+        "projects": Project.objects.filter(category=Project.Category.GENERAL),
+    }
+    return render(request, "portfolio/portfolio.html", context)
+
+
+def dashboards(request):
+    context = {
+        "projects": Project.objects.filter(category=Project.Category.POWER_BI),
+    }
+    return render(request, "portfolio/dashboards.html", context)

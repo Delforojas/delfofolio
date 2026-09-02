@@ -2,18 +2,24 @@
 {% load static %}
 
 {% block title %}Portada{% endblock %}
+{% block body_class %}home-page{% endblock %}
 
-{% block extra_css %}
-<link href="{% static 'core/css/fondo2.css' %}" rel="stylesheet">
+{% block body_overlay %}
+<div class="video-intro" id="videoIntro" role="dialog" aria-label="Introducción en vídeo">
+  <div class="video-intro__frame">
+    <video class="video-intro__media" id="videoIntroMedia" autoplay muted playsinline>
+      <source src="{% static 'core/logomotion-720p.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+  <p class="video-intro__prompt">Pulsa para continuar</p>
+</div>
 {% endblock %}
 
-
-
-{% block content %}
-<header class="masthead-portfolio1">
-  <div id="hexCanvas"></div>
-  <div id="nombre">
+{% block header %}
+<header class="home-hero">
+  <div class="container home-hero__content">
     <h1>Delfo Rojas</h1>
+
     <span class="subheading">
       <p>▸ Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</p>
       <p style="color: #f4e459; text-shadow: 0.5px 0.5px 0.5px #008A99;">
@@ -24,12 +30,12 @@
       <p>▸ Data Science</p>
       <p>▸ Machine Learning</p>
     </span>
+
+
   </div>
 </header>
-
 {% endblock %}
 
 {% block extra_js %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="{% static 'core/vendor/jquery/fondo.js' %}"></script>
+<script src="{% static 'core/js/video-intro.js' %}"></script>
 {% endblock %}
