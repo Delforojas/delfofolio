@@ -1,4 +1,4 @@
-# DelfoFolio
+# Delforojas.es
 
 Portfolio personal y profesional de Delfín Rojas, desarrollado con Python y Django.
 
