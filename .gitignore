@@ -1,9 +1,34 @@
 # Ignorar la carpeta estática generada por collectstatic
 /staticfiles/
 
-# Base de datos SQLite y entorno virtual
-/db.sqlite3
-/venv/
-*.pyc
-__pycache__/
+# Variables de entorno
+.env
+.env.*
+!.env.example
 
+# Entornos virtuales y bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Archivos del sistema
+.DS_Store
+
+# Bases de datos locales
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Logs, temporales y copias de seguridad
+*.log
+logs/
+*.tmp
+*.bak
+
+# Configuración local de IDEs
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.idea/

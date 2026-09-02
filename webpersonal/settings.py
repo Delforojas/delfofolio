@@ -21,12 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "REDACTED"
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() in {"1", "true", "yes", "on"}
 
-ALLOWED_HOSTS = ["delforojas.es", "www.delforojas.es",'delforojas.pythonanywhere.com',"localhost", "127.0.0.1","192.168.1.135"]
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "DJANGO_ALLOWED_HOSTS", "delforojas.es,www.delforojas.es"
+    ).split(",")
+    if host.strip()
+]
 
 
 # Application definition  , '127.0.0.1:8000' , 'delforojas.pythonanywhere.com', '127.0.0.1', 'localhost'
